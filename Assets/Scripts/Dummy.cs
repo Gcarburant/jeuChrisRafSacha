@@ -11,7 +11,7 @@ public class Dummy : MonoBehaviour
     private int dmgSubit;
 
 
-    public static int vieDummy;
+    public int vieDummy;
 
     public GameObject objTextDmg;
     public TMP_Text textDmg;
