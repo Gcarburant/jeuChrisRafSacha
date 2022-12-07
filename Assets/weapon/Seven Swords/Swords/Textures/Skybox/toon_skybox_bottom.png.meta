@@ -3,7 +3,7 @@ guid: 150d665d0c232df43a7e40a4244d1b2c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
@@ -65,7 +65,6 @@ TextureImporter:
   ignorePngGamma: 0
   applyGammaDecoding: 1
   swizzle: 50462976
-  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
