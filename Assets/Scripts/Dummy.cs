@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Dummy : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Dummy : MonoBehaviour
     public GameObject objTextDmg;
     public TMP_Text textDmg;
 
-    // DamageTotal = (DommageArme * BonusArmure (1.15)) - armureEnnemi
+    public Slider VieEnnemi;
 
 
 
@@ -30,7 +31,7 @@ public class Dummy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        VieEnnemi.value = vieDummy;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -51,6 +52,8 @@ public class Dummy : MonoBehaviour
                 GetComponent<Animator>().SetTrigger("Hit");
                 vieDummy -= dmgSubit;
                 Debug.Log(vieDummy);
+
+                
 
               /*    if (vieDummy <= 0)
                 {
