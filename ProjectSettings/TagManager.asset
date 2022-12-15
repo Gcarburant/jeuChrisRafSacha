@@ -7,6 +7,11 @@ TagManager:
   - Asteroid
   - Laser
   - Blade
+  - Main
+  - Bullet
+  - enemyBlade
+  - BulletEnnemi
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -18,8 +23,8 @@ TagManager:
   - ObjetSaisi
   - Blade
   - Ennemi
-  - 
-  - 
+  - NoDisplay
+  - Sliceable
   - 
   - 
   - 

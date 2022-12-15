@@ -6,7 +6,15 @@ using UnityEngine.AI;
 public class ennemi : MonoBehaviour
 {
 
+    public bool enAttaque = false;
+    public bool enBloque = false;
+    public bool mort = false;
+
+
+
     public GameObject joueur; //Le joueur
+
+    public float rotationY;
 
     Vector3 positionDepart; // Position initital
 
@@ -46,9 +54,11 @@ public class ennemi : MonoBehaviour
 
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        navMeshAgent.stoppingDistance = 1f;
+        navMeshAgent.stoppingDistance = 3f;
 
-        
+        rotationY = GetComponent<Transform>().rotation.y;
+
+
 
         //===== SECTION À COMPLETER PLUS TARD ============//
 
@@ -60,14 +70,20 @@ public class ennemi : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        navMeshAgent.SetDestination(joueur.transform.position);
-        navMeshAgent.stoppingDistance = 3f;
+        if(!mort) { 
 
-        if(Vector3.Distance(joueur.transform.position, transform.position) <= 3.5 ) {
+            if(enAttaque == false)
+            {
+                enAttaque = true;
+                Invoke("PasserAttaque", 10f);
+            }
 
-            GetComponent<Animator>().SetTrigger("attack1");
-        
+            navMeshAgent.isStopped = false;
+            RegarderJoueur();
+
+
         }
+
     }
 
 
@@ -79,8 +95,32 @@ public class ennemi : MonoBehaviour
         transform.LookAt(joueur.transform);
     }
 
+    public void PasserAttaque()
+    {
+        navMeshAgent.SetDestination(joueur.transform.position);
+        navMeshAgent.stoppingDistance = 3f;
+
+
+        if (Vector3.Distance(joueur.transform.position, transform.position) <= 3.5)
+        {
+
+
+            navMeshAgent.isStopped = true;
+            GetComponent<Animator>().SetTrigger("attack1");
+
+            
 
 
 
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Player")
+        {
+
+        }
+    }
 
 }

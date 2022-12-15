@@ -21,4 +21,17 @@ public class Balle : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+      
+
+        if(other.gameObject.tag == "Blade")
+        {
+            Debug.Log("TINK");
+            GetComponent<Rigidbody>().useGravity = true;
+            Destroy(gameObject, 2f);
+        }
+       
+    }
 }
