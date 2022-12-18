@@ -47,6 +47,8 @@ public class ennemi : MonoBehaviour
     {
         currentState = 0;
 
+        
+
         joueur = GameObject.FindGameObjectWithTag("Player");
 
         animator = GetComponent<Animator>();
@@ -72,16 +74,77 @@ public class ennemi : MonoBehaviour
     {
         if(!mort) { 
 
-            if(enAttaque == false)
+/*
+
+            if(Input.GetKeyDown(KeyCode.Alpha1))
             {
-                enAttaque = true;
-                Invoke("PasserAttaque", 10f);
+                currentState = 1;
             }
 
-            navMeshAgent.isStopped = false;
+
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                currentState = 2;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                currentState = 3;
+            }
+
+
+            if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                currentState = 4;
+            }
+*/
+
             RegarderJoueur();
+            animator.SetInteger("EtatEnnemi", currentState);
+
+            if(currentState == 1)
+            {
+                // Variable
+                // animator.SetBool("",true);
+                navMeshAgent.SetDestination(joueur.transform.position);
+            }
 
 
+            navMeshAgent.SetDestination(joueur.transform.position);
+
+            if (Vector3.Distance(joueur.transform.position, transform.position) <= 3.5)
+            {
+
+                
+                GetComponent<Animator>().SetTrigger("attack1");
+
+
+                
+
+
+            }
+            /*
+
+                        if (Vector3.Distance(transform.position, joueur.transform.position) > 3.5)
+                        {
+                            currentState = 1;
+                        }
+
+
+
+
+
+                        if(enAttaque == false)
+                        {
+                            enAttaque = true;
+                            Invoke("PasserAttaque", 10f);
+                        }
+
+                        navMeshAgent.isStopped = false;
+                        RegarderJoueur();
+
+            */
         }
 
     }
@@ -97,22 +160,11 @@ public class ennemi : MonoBehaviour
 
     public void PasserAttaque()
     {
-        navMeshAgent.SetDestination(joueur.transform.position);
-        navMeshAgent.stoppingDistance = 3f;
+       
+       
 
 
-        if (Vector3.Distance(joueur.transform.position, transform.position) <= 3.5)
-        {
-
-
-            navMeshAgent.isStopped = true;
-            GetComponent<Animator>().SetTrigger("attack1");
-
-            
-
-
-
-        }
+       
     }
 
     private void OnCollisionEnter(Collision collision)

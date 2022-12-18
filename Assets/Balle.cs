@@ -18,6 +18,7 @@ public class Balle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+      //  GetComponent<Rigidbody>().AddExplosionForce(,transform.position,);
 
         Destroy(gameObject);
     }

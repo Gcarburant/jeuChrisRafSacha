@@ -18,6 +18,10 @@ public class Dummy : MonoBehaviour
 
     public Slider VieEnnemi;
 
+    public GameObject barreVie;
+
+    public GameObject trainingDummy;
+
 
 
     // Start is called before the first frame update
@@ -51,7 +55,7 @@ public class Dummy : MonoBehaviour
 
                 GetComponent<Animator>().SetTrigger("Hit");
                 vieDummy -= dmgSubit;
-                Debug.Log(vieDummy);
+                
 
                 
 
@@ -70,7 +74,7 @@ public class Dummy : MonoBehaviour
 
                 GetComponent<Animator>().SetTrigger("Hit");
                 vieDummy -= dmgSubit;
-                Debug.Log(vieDummy);
+               
 
             /* if (vieDummy <= 0)
                 {
@@ -78,6 +82,15 @@ public class Dummy : MonoBehaviour
                 }
             */
             }
+
+
+
+            else if (vieDummy <=20 )
+            {
+                trainingDummy.layer = LayerMask.NameToLayer("Sliceable");
+            }
+
+
 
             else if (vieDummy <= 0)
             {
@@ -92,6 +105,9 @@ public class Dummy : MonoBehaviour
             leClone.SetActive(true);
             leClone.transform.SetParent(this.transform, true);
             Destroy(leClone, 0.9f);
+
+            barreVie.GetComponent<Animator>().SetTrigger("PerteVie");
+            
         }
     }
 }

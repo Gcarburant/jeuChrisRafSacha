@@ -9,12 +9,16 @@ public class Joueur : MonoBehaviour
 
     public bool stunned = false;
 
+    public float vieJoueur;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         RB = GetComponent<Rigidbody>();
+
+       //  vieJoueur = ;
     }
 
     // Update is called once per frame
