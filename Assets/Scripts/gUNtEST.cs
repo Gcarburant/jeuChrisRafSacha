@@ -20,12 +20,17 @@ public class gUNtEST : MonoBehaviour
 
     public AudioSource sonGun;
 
+    // RedDot
+    public bool actif;
+
     [SerializeField] InputActionReference shootInputAction;
 
     // Start is called before the first frame update
     void Start()
     {
         peutTirer = true;
+
+        actif = false;
     }
 
     // Update is called once per frame
@@ -92,5 +97,34 @@ public class gUNtEST : MonoBehaviour
         peutTirer = true;
     }
 
-   
+    // --------------------- RED DOT -------------------------------------------------------------------------------- //
+    void redDot()
+    {
+        var ligneRouge = boutFusil.GetComponent<LineRenderer>();
+
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            actif = (!actif);
+        }
+
+        if (actif == true)
+        {
+            RaycastHit infoCollision;
+            if (Physics.Raycast(boutFusil.transform.position, boutFusil.transform.forward, out infoCollision, 50f))
+            {
+
+            }
+
+            ligneRouge.enabled = true;
+            ligneRouge.SetPosition(0, boutFusil.transform.position);
+            ligneRouge.SetPosition(1, infoCollision.point);
+        }
+
+        if (actif == false)
+        {
+            ligneRouge.enabled = false;
+        }
+    }
+
 }

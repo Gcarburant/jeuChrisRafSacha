@@ -13,10 +13,8 @@ public class Drone : MonoBehaviour
 
 
     public GameObject joueur;
-
     public GameObject objetClone;
     public GameObject droneT;
-
     public Transform droneTransform;
 
 
@@ -53,7 +51,7 @@ public class Drone : MonoBehaviour
 
 
         clone.SetActive(true);
-        clone.transform.localScale = new Vector3(0.25f,.25f,.25f);
+        //clone.transform.localScale = new Vector3(0.25f,.25f,.25f);
         clone.GetComponent<Rigidbody>().AddForce(0, 0, 10);
         clone.GetComponent<Rigidbody>().velocity = (joueur.transform.position - clone.transform.position).normalized * 1;
         shooting = false;
